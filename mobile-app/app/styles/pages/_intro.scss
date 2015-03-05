@@ -1,0 +1,33 @@
+@import '../colors';
+
+.slider {
+  height: 100%;
+
+  .slider-slide {
+    background-color: #fff;
+    color: #000;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    padding-top: 80px;
+    text-align: center;
+  }
+}
+
+.slider-pager-page {
+
+  .icon.ion-record {
+    color: $primary-color;
+  }
+
+  &.active {
+    .icon.ion-record {
+      color: $dark-primary-color;
+    }
+  }
+}
+
+ion-slide {
+  h3 {
+    color: $dark-primary-color;
+  }
+}

@@ -1,0 +1,47 @@
+<ion-view hide-back-button="true" title="">
+  <ion-nav-buttons side="left">
+    <button class="button button button-clear no-animation"
+            ng-click="vm.startApp()" ng-if="!vm.slideIndex">
+      {{vm.locales.skip_intro}}
+    </button>
+    <button class="button button-clear no-animation"
+            ng-click="vm.previous()" ng-if="vm.slideIndex > 0">
+      {{vm.locales.common.previous}}
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button button-clear no-animation"
+            ng-click="vm.next()" ng-if="vm.slideIndex != 2">
+      {{vm.locales.common.next}}
+    </button>
+    <button class="button button-clear no-animation"
+            ng-click="vm.startApp()" ng-if="vm.slideIndex == 2">
+      {{vm.locales.common.start}}
+    </button>
+  </ion-nav-buttons>
+
+  <ion-slide-box class="bg" on-slide-changed="vm.slideChanged(index)">
+    <ion-slide class="bg">
+      <h3>{{vm.locales.text1}}</h3>
+      <div id="logo">
+        <img alt="logo" width="300px" ng-src="images/tutorial/{{vm.platform}}/play.png" />
+      </div>
+    </ion-slide>
+
+    <ion-slide class="bg">
+      <h3>{{vm.locales.text2}}</h3>
+      <div id="logo">
+        <img alt="logo" width="300px" ng-src="images/tutorial/{{vm.platform}}/play-success.png" />
+      </div>
+    </ion-slide>
+
+    <ion-slide class="bg">
+      <h3>{{vm.locales.text3}}</h3>
+      <div id="logo">
+        <img alt="logo" width="300px" ng-src="images/tutorial/{{vm.platform}}/ranking.png" />
+      </div>
+    </ion-slide>
+  </ion-slide-box>
+
+</ion-view>

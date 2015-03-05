@@ -1,0 +1,21 @@
+@import '../colors';
+
+.logo {
+  margin-top: 60px;
+  background: transparent;
+  border: 0;
+  display: block;
+  margin: auto;
+  max-width: 80%;
+  padding: 0;
+}
+
+.bar-footer {
+    background: $primary-color;
+
+    .button {
+        color: $light-primary-color;
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+}

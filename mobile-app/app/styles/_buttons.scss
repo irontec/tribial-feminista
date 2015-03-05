@@ -1,0 +1,75 @@
+@import 'colors';
+
+button,
+.card,
+.button-play {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+}
+
+.button-tw {
+  background-color: $tw-color;
+  border-color: $tw-color;
+  color: $white-color;
+
+}
+
+.button-fb {
+  background-color: $fb-color;
+  border-color: $fb-color;
+  color: $white-color;
+}
+
+.button-tw-sign {
+  background-color: $tw-color;
+  color: $white-color;
+  padding: 10px;
+  text-align: center;
+
+  .button-icon {
+    display: block;
+  }
+}
+
+.button-fb-sign {
+  background-color: $fb-color;
+  color: $white-color;
+  padding: 10px;
+  text-align: center;
+
+  .button-icon {
+    display: block;
+  }
+}
+
+.button-play {
+  background-color: $primary-color;
+  color: $white-color;
+  padding: 10px;
+  text-align: center;
+
+  .button-icon {
+    display: block;
+  }
+}
+
+.button-confirm {
+  background-color: $primary-color;
+  color: $white-color;
+  padding: 10px;
+  text-align: center;
+
+  .button-icon {
+    display: block;
+  }
+}
+
+.popup-buttons .button.button-positive {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.popup-buttons .button.button-negative {
+  background-color: $accent-color;
+  border-color: $accent-color;
+  color: $white-color;
+}

@@ -1,0 +1,374 @@
+@import '../colors';
+
+.bar-header {
+
+  background-color: $primary-color;
+
+  .title {
+      color: $white-color;
+  }
+
+  span {
+      color: $white-color;
+  }
+}
+
+.bar-subheader {
+  height: 36px;
+  padding: 2px;
+  margin: 0px;
+  display: inline;
+
+  .row {
+    margin:0;
+    padding: 0 4px 0 4px;
+  }
+}
+
+.has-subheader {
+  top: 100px !important;
+}
+
+.game-stars-wrapper {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 4px;
+
+  .disabled {
+      color: $white-color;
+  }
+
+  .active {
+      text-shadow: none !important;
+  }
+}
+
+.game-lives-wrapper {
+  text-align: right;
+  margin: 0;
+  color: $live-full;
+  font-size: 18px;
+
+  .icon  {
+      padding-bottom: 3px;
+  }
+
+  .extra {
+      color: $live-extra-full;
+  }
+
+  .ion-heart-broken {
+      color: $live-empty !important;
+  }
+}
+
+.game-points-wrapper {
+  font-size: 16px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 15px;
+}
+
+.game-range {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+  margin-top: 0;
+  padding: 0;
+
+  // scss-lint:disable SelectorFormat
+  .containerBar {
+    border-radius: 0;
+  }
+
+  .maxValue {
+    background-color: $dark-primary-color;
+    border-radius: 0;
+
+    .currentValue {
+      background-color: $accent-color;
+      border-radius: 2px;
+    }
+
+    .maxLifeCurrent {
+      font-size: x-large;
+    }
+  }
+  // scss-lint:enable SelectorFormat
+
+}
+
+.game-content {
+  top: 80px;
+
+  .padding {
+    /*padding: 0 10px;*/
+
+    .card {
+
+      margin:0px !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+
+        &.platform-ios {
+          margin-top: 90px !important;
+        }
+    }
+  }
+}
+
+.content-dark {
+  background: #444;
+}
+
+.game-question {
+  margin-bottom: 0;
+
+  ion-item {
+    background-color: $accent-color;
+    border: 0;
+    color: $white-color;
+  }
+
+}
+
+@keyframes star-animation {
+  from { transform: rotate(0deg) scale(.983) skew(1deg) translate(0); }
+  to { transform: rotate(360deg) scale(.983) skew(1deg) translate(0); }
+}
+
+.game-star {
+
+  &.active {
+    animation: star-animation 1s 1 linear;
+  }
+}
+
+.game-content {
+
+  border: 0;
+  z-index: 20;
+
+  h2 {
+    text-align: center;
+    font-size: 22px;
+    color: $white-color;
+  }
+
+  .question-bar {
+
+    margin: 0;
+    padding: 0;
+
+    p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 16px;
+    }
+  }
+}
+
+.category-bar-e {
+  background: $category-e-color;
+}
+
+.category-bar-a {
+  background: $category-a-color;
+}
+
+.category-bar-d {
+  background: $category-d-color;
+}
+
+.category-bar-g {
+  background: $category-g-color;
+
+}
+
+.category-bar-c {
+  background: $category-c-color;
+}
+
+.category-bar-h {
+  background: $category-h-color;
+  h2 {
+    color: #717171;
+  }
+ }
+
+.congrats-icon {
+  font-size: 80px;
+  display: block;
+  text-align: center;
+}
+
+.congrats-category {
+  font-size: 24px;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.congrats-text {
+  text-align: center;
+}
+
+.congrats-share {
+  text-align: center;
+}
+
+.star-e.active {
+  color: $category-e-color;
+}
+
+.star-a.active {
+  color: $category-a-color;
+}
+
+.star-d.active {
+  color: $category-d-color;
+}
+
+.star-g.active {
+  color: $category-g-color;
+}
+
+.star-c.active {
+  color: $category-c-color;
+}
+
+.star-h.active {
+  color: $category-h-color;
+}
+
+.star-e.disabled {
+  text-shadow: 0 0 4px  $category-e-color-disabled, 0 0 4px  $category-e-color-disabled, 0 0 4px  $category-e-color-disabled, 0 0 4px  $category-e-color-disabled, 0 0 4px  $category-e-color-disabled;
+}
+
+.star-a.disabled {
+  text-shadow: 0 0 4px  $category-a-color-disabled, 0 0 4px  $category-a-color-disabled, 0 0 4px  $category-a-color-disabled, 0 0 4px  $category-a-color-disabled, 0 0 4px  $category-a-color-disabled;
+}
+
+.star-d.disabled {
+  text-shadow: 0 0 4px  $category-d-color-disabled, 0 0 4px  $category-d-color-disabled, 0 0 4px  $category-d-color-disabled, 0 0 4px  $category-d-color-disabled, 0 0 4px  $category-d-color-disabled;
+}
+
+.star-g.disabled {
+  text-shadow: 0 0 4px  $category-g-color-disabled, 0 0 4px  $category-g-color-disabled, 0 0 4px  $category-g-color-disabled, 0 0 4px  $category-g-color-disabled, 0 0 4px  $category-g-color-disabled;
+}
+
+.star-c.disabled {
+  text-shadow: 0 0 4px  $category-c-color-disabled, 0 0 4px  $category-c-color-disabled, 0 0 4px  $category-c-color-disabled, 0 0 4px  $category-c-color-disabled, 0 0 4px  $category-c-color-disabled;
+}
+
+.star-h.disabled {
+  text-shadow: 0 0 4px  $category-h-color-disabled, 0 0 4px  $category-h-color-disabled, 0 0 4px  $category-h-color-disabled, 0 0 4px  $category-h-color-disabled, 0 0 4px  $category-h-color-disabled;
+}
+
+.bar-countdown {
+  padding: 0px;
+  margin: 0px;
+}
+
+.countdown {
+  color: $white-color;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.countdown-text {
+
+  p {
+      width: 100%;
+      text-align: right !important;
+      margin-top: 10px;
+      padding-right: 16px;
+      overflow: hidden;
+  }
+
+  i {
+    margin-right: 4px;
+  }
+
+}
+
+.countdown-alert {
+
+  p {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+}
+
+.timer-5 {
+  background-color: $countdown-5;
+}
+
+.timer-4 {
+  background-color: $countdown-4;
+}
+
+.timer-3 {
+  background-color: $countdown-3;
+}
+
+.timer-2 {
+  background-color: $countdown-2;
+}
+
+.timer-1 {
+  background-color: $countdown-1;
+}
+
+.modal {
+  overflow: hidden;
+}
+
+.help-content {
+  top: 40px;
+  font-size: 18px;
+  background-color: #ece3f4;
+
+  i {
+    font-size: 22px;
+  }
+
+  h3 {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .first-title {
+    margin-top: 10px;
+  }
+
+  .platform-ios {
+    margin-top: 30px;
+  }
+
+  .disabled {
+    color: $white-color;
+  }
+
+  .help-text {
+    text-align: center;
+  }
+
+  .game-lives {
+
+    .ion-heart {
+      color: $live-full;
+    }
+
+    .ion-heart-broken {
+      color: $live-empty !important;
+    }
+
+    .extra {
+      color: $live-extra-full !important;
+    }
+  }
+}

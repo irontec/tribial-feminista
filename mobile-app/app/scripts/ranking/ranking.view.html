@@ -1,0 +1,31 @@
+<ion-view title="{{vm.locales.title}}">
+  <ion-content class="bg">
+    <ion-refresher ng-show="vm.isOnline && vm.isLoaded && !vm.isEmpty()" pulling-text="{{vm.locales.refresh}}" on-refresh="vm.refresh()">
+    </ion-refresher>
+    {{vm.refreshLabel}}
+    <ion-list ng-show="vm.isOnline && vm.isLoaded && !vm.isEmpty()" class="ranking">
+      <ion-item class="ranking-item" ng-repeat="score in vm.scores() | orderObjectBy:'score'">
+        <span ng-if="score.user.loginType == 'twitter'" class="animate-if">
+          <img alt="twitter-picture" class="ranking-item-picture" ng-src="{{score.user.twPicUrl}}" />
+          <h2 class="ranking-item-username">{{score.user.twUsername}}</h2>
+        </span>
+        <span ng-if="score.user.loginType == 'facebook'" class="animate-if">
+          <img alt="facebook-picture" class="ranking-item-picture" ng-src="{{score.user.fbPicUrl}}" />
+          <h2 class="ranking-item-username">{{score.user.fbUsername}}</h2>
+        </span>
+        <span class="badge badge-assertive">{{score.score}}</span>
+      </ion-item>
+    </ion-list>
+    <ion-list class="ranking-notification-list" ng-show="vm.isEmpty()">
+      <ion-item ng-show="vm.isOnline && vm.isLoaded" class="ranking-notification">
+        {{vm.locales.common['ranking_empty']}}
+      </ion-item>
+      <ion-item ng-show="vm.isOnline && !vm.isLoaded" class="ranking-notification">
+        {{vm.locales.common['loading']}}
+      </ion-item>
+      <ion-item ng-show="!vm.isOnline" class="ranking-notification">
+        {{vm.locales.common['connection_error']}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,27 @@
+@import 'colors';
+
+.bg {
+  background: url('../images/background-green-2.jpg') #fff no-repeat;
+  background-size: cover;
+}
+
+.pane,
+.view {
+  background-color: $background-color;
+}
+
+.bar {
+  &.bar-dark {
+    background-color: $primary-color;
+    background-image: none;
+    border: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    transition: background-color 100ms linear;
+
+  }
+}
+
+.span-block {
+  display: block;
+  text-align: center;
+}

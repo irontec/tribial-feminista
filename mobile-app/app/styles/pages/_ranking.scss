@@ -1,0 +1,35 @@
+@import '../colors';
+
+.ranking {
+  .ranking-item {
+    .ranking-item-picture {
+      border-radius: 20px;
+      height: 40px;
+      width: 40px;
+    }
+
+    .ranking-item-username {
+      color: $primary-color;
+      display: inline-block;
+    }
+
+    .badge {
+        background-color: $primary-color;
+        margin-top: 10px;
+    }
+
+    .ranking-item-points {
+      color: $white-color;
+      display: inline-block;
+      float: right;
+      text-align: right;
+    }
+  }
+}
+
+.ranking-notification-list {
+  .list {
+    margin-top: 50px;
+  }
+
+}

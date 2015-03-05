@@ -1,0 +1,110 @@
+<ion-view hide-back-button="true" title="<strong>Puntuazioa:</strong> {{vm.points()}}">
+  <ion-nav-buttons side="left">
+    <i class="button-icon ion-android-arrow-back button back-button" ng-click="vm.gameBackButton()">
+    </i>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <i class="button-icon ion-help-circled button" ng-click="vm.showHelpPopUp()">
+    </i>
+  </ion-nav-buttons>
+  <div class="bar bar-subheader" ng-if="vm.isLoaded">
+      <div class="row">
+        <div class="game-stars-wrapper col col-50">
+            <i
+                class="icon ion-female game-star star-{{category}} disabled"
+                ng-repeat="(category, status) in vm.categoryStars()"
+                ng-class="{'active': status}">
+            </i>
+        </div>
+        <div class="game-lives-wrapper col col-50">
+            <i class="icon" ng-class="{'ion-heart': vm.life() > 0, 'ion-heart-broken': vm.life() < 1}"></i>
+            <i class="icon" ng-class="{'ion-heart': vm.life() > 1, 'ion-heart-broken': vm.life() < 2}"></i>
+            <i class="icon" ng-class="{'ion-heart': vm.life() > 2, 'ion-heart-broken': vm.life() < 3}"></i>
+            <i class="icon" ng-class="{'ion-heart': vm.life() > 3, 'ion-heart-broken': vm.life() < 4}"></i>
+            <i class="icon" ng-class="{'ion-heart': vm.life() > 4, 'ion-heart-broken': vm.life() < 5}"></i>
+            <i class="icon extra" ng-class="{'ion-heart': vm.life() > 5, 'ion-heart-broken': vm.life() < 6}"></i>
+        </div>
+      </div>
+  </div>
+  <ion-content class="game-content bg has-footer has-subheader padding">
+
+    <div class="list card platform-{{vm.platform}}">
+        <div class="item item-divider category-bar-{{vm.questionCategory()}}">
+            <h2>{{vm.locales['category_names'][vm.questionCategory()]}}</h2>
+        </div>
+        <div class="item item-text-wrap item-body question-bar">
+            <p>{{vm.question()[vm.QuestionPropertyLabel]}}</p>
+        </div>
+
+      <div class="item item-body">
+        <div class="list" ng-if="vm.answers()">
+          <ion-radio
+             class="item-text-wrap"
+             ng-repeat="answer in vm.answers() track by answer.answerId"
+             ng-value="answer.answerId"
+             ng-model="vm.selectedAnswer"
+             ng-click="vm.confirm()"
+             icon="ion-checkmark">
+             {{answer[vm.AnswerPropertyLabel]}}
+           </ion-radio>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="bar bar-footer bar-countdown">
+    <timer interval="1000" ng-show="vm.getCountDown()">
+        <div class="bar timer-5 countdown countdown-text" style="width: {{vm.getCountDown()*5}}%;" ng-class="vm.getCountDownClass()">
+            <p><i class="ion-clock"></i> {{vm.getCountDown()}}</p>
+        </div>
+    </timer>
+    <div class="bar timer-1 countdown countdown-alert" style="width: 100%;" ng-show="!vm.getCountDown()" ng-cloak>
+        <p><i class="ion-alert-circled"></i> {{vm.locales['no_time']}}</p>
+    </div>
+  </div>
+</ion-view>
+
+<script id="modal.html" type="text/ng-template">
+  <div class="modal">
+    <header class="bar bar-header">
+      <h1 class="title">{{vm.locales['help']}}</h1>
+      <div class="button button-clear" ng-click="hideWithResume()"><span class="icon ion-close"></span></div>
+    </header>
+    <ion-content class="help-content" has-header="true" padding="true">
+    <h3 class="first-title platform-{{vm.platform}}">{{vm.locales['wedges']}}</h3>
+    <div class="row help-text">
+        <div class="col"><i class="ion-female game-star star-e disabled"></i> {{vm.locales['not_achieved']}}</div>
+        <div class="col"><i class="ion-female game-star star-e active"></i> {{vm.locales['achieved']}}</div>
+    </div>
+    <hr>
+    <h3>{{vm.locales['categories']}}</h3>
+    <div class="row">
+        <div class="col col-66 col-offset-20"><i class="ion-female game-star star-e active"></i> {{vm.locales['category_names']['e']}}</div>
+    </div>
+    <div class="row">
+        <div class="col col-66 col-offset-20"><i class="ion-female game-star star-h active"></i> {{vm.locales['category_names']['h']}}</div>
+    </div>
+    <div class="row">
+        <div class="col col-66 col-offset-20"><i class="ion-female game-star star-d active"></i> {{vm.locales['category_names']['d']}}</div>
+    </div>
+    <div class="row">
+        <div class="col col-66 col-offset-20"><i class="ion-female game-star star-g active"></i> {{vm.locales['category_names']['g']}}</div>
+    </div>
+    <div class="row">
+        <div class="col col-66 col-offset-20"><i class="ion-female game-star star-a active"></i> {{vm.locales['category_names']['a']}}</div>
+    </div>
+    <div class="row">
+        <div class="col col-66 col-offset-20"><i class="ion-female game-star star-c active"></i> {{vm.locales['category_names']['c']}}</div>
+    </div>
+    <hr>
+    <h3>{{vm.locales['lives']}}</h3>
+    <div class="row game-lives help-text">
+        <div class="col"><i class="ion-heart extra"></i> {{vm.locales['live_extra']}}</div>
+        <div class="col"><i class="ion-heart-broken"></i> {{vm.locales['live_empty']}}</div>
+    </div>
+    <div class="row game-lives help-text">
+        <div class="col col-50 col-offset-25"><i class="ion-heart"></i> {{vm.locales['live']}}</div>
+    </div>
+    </ion-content>
+  </div>
+</script>

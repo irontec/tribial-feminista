@@ -16,8 +16,8 @@ mobile-app/ant.properties
 mobile-app/coverage
 
 mobile-app/tmp/
+mobile-app/.tmp/
 mobile-app/temp/
-
 mobile-app/.sass-cache
 
 ########### Klear Project ##############

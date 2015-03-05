@@ -1,0 +1,12 @@
+<ion-view title="{{vm.locales.title}}">
+  <ion-content class="bg" padding="true">
+    <div class="card button-play" ng-click="vm.updateQuestions()">
+      <i class="button-icon icon ion-android-cloud-outline"></i>
+      <span class="button-text">{{vm.locales.checkForUpdates}}</span>
+    </div>
+    <div class="card button-play" ng-click="vm.closeSession()">
+      <i class="button-icon icon ion-android-lock"></i>
+      <span class="button-text">{{vm.locales.close_session}}</span>
+    </div>
+  </ion-content>
+</ion-view>

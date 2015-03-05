@@ -1,0 +1,29 @@
+<ion-view hide-back-button="true" title="{{vm.locales.title}}">
+
+  <ion-content class="has-footer bg" padding="true">
+    <div class="row-center">
+      <div class="">
+        <div class="item item-body logo">
+            <img alt="logo" class="full-image" ng-src="images/logo-title.png" />
+        </div>
+      </div>
+      <div class="">
+        <button class="button button-block button-positive icon ion-play" ng-click="vm.goTo('game')">
+          {{vm.locales.play}}
+        </button>
+        <button class="button button-block button-energized icon ion-podium" ng-click="vm.goTo('ranking')">
+          {{vm.locales.ranking}}
+        </button>
+        <button class="button button-block button-balanced icon ion-help" ng-click="vm.goTo('intro')">
+          {{vm.locales.tutorial}}
+        </button>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="bar bar-footer">
+    <i class="button-icon ion-gear-a button" ng-click="vm.goTo('settings')"></i>
+    <i class="button-icon ion-information button" ng-click="vm.goTo('about')"></i>
+  </div>
+
+</ion-view>

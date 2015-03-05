@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <title>Tribial Feminista</title>
+
+    <!-- build:css styles/vendor.css -->
+    <!-- <link rel="stylesheet" href="vendor/some.contrib.css"> -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/ionic/release/css/ionic.css" />
+    <link rel="stylesheet" href="lib/ionicons/css/ionicons.css" />
+    <link rel="stylesheet" href="lib/angular-omni-bar/isteven-omni-bar.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css" />
+    <!-- endbuild -->
+  </head>
+
+  <body ng-app="tribialfeminista">
+    <ion-nav-bar class="nav-title-slide-ios7 bar-dark">
+      <ion-nav-back-button class="button-icon ion-android-arrow-back">
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-nav-view></ion-nav-view>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- <script src="vendor/someContribJs.js"></script> -->
+    <!-- bower:js -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="lib/collide/collide.js"></script>
+    <script src="lib/ionic/release/js/ionic.js"></script>
+    <script src="lib/ionic/release/js/ionic-angular.js"></script>
+    <script src="lib/underscore/underscore.js"></script>
+    <script src="lib/angular-omni-bar/isteven-omni-bar.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/jssha/src/sha.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/config.js"></script>
+
+    <script src="scripts/core/app.core.js"></script>
+    <script src="scripts/core/config.js"></script>
+    <script src="scripts/core/languages.js"></script>
+
+    <script src="scripts/helpers/helpers.module.js"></script>
+    <script src="scripts/helpers/safeApply.helper.js"></script>
+    <script src="scripts/helpers/lang/lang.provider.js"></script>
+    <script src="scripts/helpers/orderObjectBy.filter.js"></script>
+    <script src="scripts/helpers/share.helper.js"></script>
+    <script src="scripts/helpers/backButton.manager.js"></script>
+    <script src="scripts/helpers/cordovaBackButton.handler.js"></script>
+
+
+    <script src="scripts/intro/intro.module.js"></script>
+    <script src="scripts/intro/intro.controller.js"></script>
+
+    <script src="scripts/user/user.module.js"></script>
+    <script src="scripts/user/user.model.js"></script>
+    <script src="scripts/user/login/auth.factory.js"></script>
+    <script src="scripts/user/login/login.controller.js"></script>
+
+    <script src="scripts/main/main.module.js"></script>
+    <script src="scripts/main/main.controller.js"></script>
+
+    <script src="scripts/game/game.module.js"></script>
+    <script src="scripts/game/game.questions.model.js"></script>
+    <script src="scripts/game/game.questions.loader.js"></script>
+    <script src="scripts/game/game.questions.manager.js"></script>
+    <script src="scripts/game/game.model.js"></script>
+    <script src="scripts/game/game.controller.js"></script>
+
+    <script src="scripts/ranking/ranking.module.js"></script>
+    <script src="scripts/ranking/ranking.model.js"></script>
+    <script src="scripts/ranking/ranking.controller.js"></script>
+
+    <script src="scripts/settings/settings.module.js"></script>
+    <script src="scripts/settings/settings.controller.js"></script>
+
+    <script src="scripts/about/about.module.js"></script>
+    <script src="scripts/about/about.controller.js"></script>
+
+
+    <script src="scripts/app.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
