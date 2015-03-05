@@ -1,0 +1,37 @@
+License
+
+Tribial Feminista is “Free and Open Source software” (F/OSS) and licensed under the “European Union Public Licence” (EUPL).
+
+Here are some quick facts for a first glance to make the license easier to understand:
+
+* You receive a series of world-wide, permanent, royalty-free, and non-exclusive rights. This means, for example, you can use XXXXX in Europe and outside of Europe, and the rights are given forever.
+* You can use Tribial Feminista in any circumstance and for all usage. This means, for example, that both private and public uses, non-profit or for-profit uses are allowed. Your program distributed along with it is not restricted to be open-source software. You can use XXXXXX within a single application using static or dynamic linking, but without merging the source codes.
+* If you make modifications and decide to re-distribute the derivative work, the forked derivative must be under the EUPL. If you incorporate pieces of software code licensed under a “permissive“ license (e.g. MIT or BSD), you re-distribute the combined derivative under the provision of the EUPL. If you incorporate pieces of software code licensed under a “copyleft“ license (e.g. GPL or EPL), you re-redistribute the combined derivative under the provision of the “copyleft“ license.
+
+For the full license text and more detailed explanations (available in 22 languages):
+
+* Text and preamble of the European Union Public Licence (EUPL)
+https://joinup.ec.europa.eu/software/page/eupl/licence-eupl
+
+* EUPL Guidelines for users and developers
+https://joinup.ec.europa.eu/software/page/eupl/eupl-guidelines
+
+The license header:
+
+Copyright 2015 Irontec SL
+
+Licensed under the EUPL, Version 1.1 or - as soon they will be approved by the European
+Commission - subsequent versions of the EUPL (the "Licence"); You may not use this work
+except in compliance with the Licence.
+
+You may obtain a copy of the Licence at:
+http://ec.europa.eu/idabc/eupl.html
+
+Unless required by applicable law or agreed to in writing, software distributed under 
+the Licence is distributed on an "AS IS" basis, WITHOUT WARRANTIES OR CONDITIONS OF 
+ANY KIND, either express or implied. See the Licence for the specific language 
+governing permissions and limitations under the Licence.
+
+
+
+
