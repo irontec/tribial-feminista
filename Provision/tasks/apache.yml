@@ -1,0 +1,44 @@
+---
+- name: apache | Install apache
+  apt: pkg=apache2-mpm-prefork state=latest
+  tags: 
+    - apache
+    - common
+
+- name: apache | Enable rewrite in apache
+  command: a2enmod rewrite
+  tags:
+    - apache
+    - common
+
+- name: apache | Enable ssl in apache
+  command: a2enmod ssl
+  tags: 
+    - apache
+    - common
+
+- name: apache | Install php apache module
+  apt: pkg=libapache2-mod-php5 state=latest
+  tags: 
+    - apache
+    - common
+
+- name: apache | Configura apache SSL
+  copy: src=files/apache/default-ssl dest=/etc/apache2/sites-available/default-ssl force=yes
+  tags: 
+    - apache
+    - common
+
+- name: apache | Configure apache
+  copy: src=files/apache/default dest=/etc/apache2/sites-available/default force=yes
+  tags: 
+    - apache
+    - common
+
+- name: apache | Enable sites and restart
+  shell: a2ensite default-ssl && a2ensite default
+  notify: restart apache
+  ignore_errors: yes
+  tags: 
+    - apache
+    - common

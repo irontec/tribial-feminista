@@ -1,0 +1,75 @@
+---
+- name: phing | Install Phing latest phar
+  shell: wget http://www.phing.info/get/phing-latest.phar -P /usr/local/bin/
+  ignore_errors: yes
+  tags: 
+    - phing
+    - common
+
+- name: phing | Install Phing latest phar
+  shell: chmod +x /usr/local/bin/phing-latest.phar
+  ignore_errors: yes
+  tags: 
+    - phing
+    - common
+
+- name: phing | Install Phing latest phar
+  shell: ln -s /usr/local/bin/phing-latest.phar /usr/local/bin/phing
+  ignore_errors: yes
+  tags: 
+    - phing
+    - common
+
+- name: phing development | Initialize Phing
+  shell: phing init -De=development -Dk=/opt/klear-development -Da=../web/application
+  args:
+    chdir: /vagrant/phing
+  ignore_errors: yes
+  tags: 
+    - phing
+    - development
+
+- name: phing production | Initialize Phing
+  shell: phing init -De=production -Dk=/opt/klear-core -Da=../web/application
+  args:
+    chdir: /vagrant/phing
+  ignore_errors: yes
+  tags: 
+    - phing
+    - production
+
+#- name: phing development | First Migrate
+#  shell: phing migrate -De=development -Dk=/opt/klear-development -Da=../web/application
+#  args:
+#    chdir: /vagrant/phing
+#  ignore_errors: yes
+#  tags: 
+#    - phing
+#    - phing-migrate-development
+#    - development
+
+#- name: phing prorduction | First Migrate
+#  shell: phing migrate -De=production -Dk=/opt/klear-core -Da=../web/application
+#  args:
+#    chdir: /vagrant/phing
+#  ignore_errors: yes
+#  tags: 
+#    - phing
+#    - phing-migrate-production
+#    - production
+
+- name: phing development | Db Change
+  shell: phing db-change -De=development -Dk=/opt/klear-development -Da=../web/application
+  args:
+    chdir: /vagrant/phing
+  ignore_errors: yes
+  tags: 
+    - phing-db-change-development
+
+- name: phing production | Db Change
+  shell: phing db-change -De=production -Dk=/opt/klear-core -Da=../web/application
+  args:
+    chdir: /vagrant/phing
+  ignore_errors: yes
+  tags: 
+    - phing-db-change-production

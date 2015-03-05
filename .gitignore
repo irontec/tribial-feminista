@@ -1,0 +1,43 @@
+########### Vagrant #########
+.vagrant
+
+########### Ionic Project #############
+mobile-app/node_modules/
+imobile-app/app/bower_components
+mobile-app/app/lib
+
+mobile-app/www
+mobile-app/platforms
+mobile-app/plugins
+
+mobile-app/app/scripts/config.js
+mobile-app/ant.properties
+
+mobile-app/coverage
+
+mobile-app/tmp/
+mobile-app/temp/
+
+mobile-app/.sass-cache
+
+########### Klear Project ##############
+web/vendor/*
+
+web/storage/*
+web/application/cache/*
+
+########## Phing ######################
+phing/dumps/*
+phing/deploy/scripts/*
+
+##########  Editors Files ##############
+*.atomignore
+*.idea
+
+########## Others ##########
+tmp
+*.DS_Store
+*.log
+*.swo
+*.swp
+*.svn

@@ -1,0 +1,3 @@
+#!/bin/bash
+export TESSDATA_PREFIX=/usr/share/tesseract-ocr/
+/usr/bin/tesseract $@

@@ -1,0 +1,75 @@
+#!/bin/sh
+ 
+### BEGIN INIT INFO
+# Provides:          gearmandpersitent
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the gearmand job queue
+# Description:       starts gearmand using start-stop-daemon
+# Installation:      "update-rc.d gearmandpersitent defaults"
+### END INIT INFO
+ 
+DAEMON=/usr/local/sbin/gearmand
+PIDFILE=/var/run/gearmandpersistent.pid
+LOGFILE=/var/log/gearmand/gearmandpersistent.log
+NAME=gearmandpersistent
+DESC=gearmandpersistent
+PORT=4731
+#DBFILE=/var/spool/gearmand/persistent.sqlite
+DBFILE=/var/spool/gearmand/persistent.tch
+
+test -x $DAEMON || exit 0
+ 
+#set -e
+
+ 
+start () {
+        echo -n "Starting $DESC: "
+        
+        if [ -f $PIDFILE ];
+        then
+            echo "gearmand allready running (Exiting)."
+            exit 1
+        fi
+        #$DAEMON -d -q libsqlite3 --libsqlite3-db=$DBFILE --pid-file $PIDFILE --port  $PORT --log-file $LOGFILE
+        $DAEMON -d -q libtokyocabinet --libtokyocabinet-file=$DBFILE --pid-file $PIDFILE --port  $PORT --log-file $LOGFILE
+        echo "$NAME."
+}
+stop () {
+        echo -n "Stopping $DESC:"
+        if [ -f $PIDFILE ];
+        then
+            kill -9 $(cat $PIDFILE)
+        fi
+        rm -f $PIDFILE
+        echo "$NAME."
+        return "0"
+        
+}
+ 
+restart () {
+        stop
+        start
+}
+ 
+ 
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart|force-reload)
+    restart
+    ;;
+  *)
+        N=/etc/init.d/$NAME
+        echo "Usage: $N {start|stop|restart|force-reload}" >&2
+        exit 1
+        ;;
+esac
+ 
+exit 0

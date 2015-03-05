@@ -1,0 +1,19 @@
+---
+- name: supervisor | Install supervisor
+  apt: pkg=supervisor state=latest
+  tags: 
+    - supervisor
+    - common
+
+- name: supervisor | Copy supervisor configuration file
+  copy: src=files/supervisor/supervisord.conf dest=/etc/supervisor/supervisord.conf
+  tags: 
+    - supervisor
+    - common
+
+- name: supervisor | Copy supervisor configuration files
+  copy: src=files/supervisor/conf.d/ dest=/etc/supervisor/conf.d/ force=yes
+  notify: restart supervisor
+  tags: 
+    - supervisor
+    - common

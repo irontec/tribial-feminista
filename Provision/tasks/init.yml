@@ -1,0 +1,41 @@
+---
+- name: init | Update apt
+  apt: update_cache=yes
+  tags: 
+    - init
+    - common
+
+- name: init | Configure timezone
+  copy: content={{ timezone }} dest=/etc/timezone
+  notify: set timezone
+  tags: 
+    - timezone
+    - common
+
+- name: init | Configure localtime
+  copy: src=/usr/share/zoneinfo/{{ timezone }} dest=/etc/localtime
+  tags: 
+    - timezone
+    - common
+
+- name: init | Install sys packages
+  apt: pkg={{ item }} state=latest
+  with_items: sys_packages
+  tags: 
+    - init
+    - common
+
+- name: init | Change hostname
+  shell: echo {{ hostname }} > /etc/hostname
+#  notify: hostname start
+  ignore_errors: true
+  tags: 
+    - init
+    - common
+
+- name: init | enable hostname at hosts
+  shell: echo "127.0.1.1 {{ hostname }}" >> /etc/hosts
+  ignore_errors: true
+  tags: 
+    - init
+    - common

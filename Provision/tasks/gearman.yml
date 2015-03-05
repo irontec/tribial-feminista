@@ -1,0 +1,71 @@
+---
+- name: gearman | download gearmand
+  get_url: url=https://launchpad.net/gearmand/1.2/1.1.12/+download/gearmand-1.1.12.tar.gz dest=/tmp/ force=yes
+  tags: gearman
+
+- name: gearman | extract gearmand
+  shell: tar zxf gearmand-1.1.12.tar.gz -C /usr/local/src/
+  args:
+    chdir: /tmp
+  tags: 
+    - gearman
+    - common
+
+- name: gearman | Install gearmand dependencies
+  apt: pkg={{ item }} state=latest
+  with_items: gearmand_dependencies
+  tags: 
+    - gearman
+    - common
+
+- name: gearman | Compile gearmand
+  shell: ./configure && make -j 4 && make install creates=/usr/local/bin/gearmand
+  args:
+    chdir: /usr/local/src/gearmand-1.1.12
+  tags: 
+    - gearman
+    - common
+
+- name: gearman | Install gearman pecl extension
+  shell: pecl install -f gearman creates=/usr/lib/php5/20100525/gearman.so
+  tags: 
+    - gearman
+    - common
+
+- name: gearman | Creates gearman.ini file && enable it
+  shell: echo "extension=gearman.so" > /etc/php5/conf.d/gearman.ini && php5enmod gearman creates=/etc/php5/apache2/conf.d/gearman.ini
+  notify: restart apache
+  tags: 
+    - gearman
+    - common
+
+- name: gearman | Install init.d/gearmand
+  copy: src=files/gearmand/gearmand dest=/etc/init.d/gearmand force=yes
+  tags: 
+    - gearman
+    - common
+
+- name: gearman | chmod init.d/gearmand && update-rc.d gearmand
+  shell: chmod a+x /etc/init.d/gearmand && update-rc.d gearmand defaults
+  tags: 
+    - gearman
+    - common
+
+- name: gearman | Install init.d/gearmandpersistent
+  copy: src=files/gearmand/gearmandpersistent dest=/etc/init.d/gearmandpersistent force=yes
+  tags: 
+    - gearman
+    - common
+
+- name: gearman | chmod init.d/gearmandpersistent && update-rc.d gearmandpersistent
+  shell: mkdir /var/spool/gearmand/ -p && chmod a+x /etc/init.d/gearmandpersistent && update-rc.d gearmandpersistent defaults
+  tags: 
+    - gearman
+    - common
+
+- name: gearmand | Create log directory
+  shell: mkdir /var/log/gearmand/ -p
+  notify: restart gearmand
+  tags: 
+    - gearman
+    - common

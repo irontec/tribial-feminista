@@ -1,0 +1,20 @@
+---
+- name: zendframework | Install zend framework
+  shell: rm -rf /usr/local/src/zf1 && git clone https://github.com/zendframework/zf1.git /usr/local/src/zf1
+  tags: 
+    - zendframework
+    - common
+
+- name: zendframework | update zf1
+  shell: git pull
+  args:
+    chdir: /usr/local/src/zf1
+  tags: 
+    - zendframework
+    - common
+
+- name: zendframework | link zf1 into include_path
+  shell: ln -s /usr/local/src/zf1/library/Zend /usr/share/php/Zend creates=/usr/share/php/Zend/Version.php
+  tags: 
+    - zendframework
+    - common

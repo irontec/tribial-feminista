@@ -1,0 +1,1 @@
+ALTER TABLE `Questions` CHANGE `id` `id` binary(36) NOT NULL COMMENT '[uuid]';

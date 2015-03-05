@@ -1,0 +1,47 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+    sys_packages: ['vim', 'subversion', 'git', 'build-essential', 'htop', 'screen', 'imagemagick', 'nfs-common', 'portmap']
+    php_packages: ['php5-curl', 'php5-imagick', 'php5-cli', 'php5-dev', 'php5-mysql', 'php5-xdebug', 'php-pear', 'phpunit', 'php-apc', 'php5-memcached']
+    phing_packages: ['php-pear']
+    gearmand_dependencies: ['re2c', 'libboost-all-dev', 'gperf', 'libevent-dev', 'uuid-dev', 'libcloog-ppl-dev', 'libsqlite3-dev', 'libtokyocabinet-dev']
+    npm_packages: ['bower']
+    gem_packages: ['sass', 'compass']
+    project_name: tribialfeminista
+    timezone: Europe/Madrid
+    hostname: tribialfeminista
+    credentials:
+      database:
+        user: root
+        pass: 1234
+        db: tribialfeminista
+        encoding: utf8
+        collation: utf8_general_ci
+    node:
+      version: 0.10.32
+      prefix: node-v0.10.32
+      tarball: node-v0.10.32.tar.gz
+      path: /usr/local
+    rvm:
+      version: 2.1
+
+  handlers:
+    - include: handlers/handlers.yml
+  tasks:
+    - include: tasks/init.yml
+    - include: tasks/php-modules.yml
+    - include: tasks/php-yaml.yml
+    - include: tasks/php-gearman.yml
+    - include: tasks/php-composer.yml
+    - include: tasks/zendframework.yml
+    - include: tasks/apache.yml
+    - include: tasks/database.yml
+    - include: tasks/phing.yml
+    - include: tasks/gearman.yml
+    - include: tasks/supervisor.yml
+    - include: tasks/node.yml
+    - include: tasks/npm-packages.yml
+#    - include: tasks/rvm.yml
+#    - include: tasks/gem-packages.yml
+#    - include: tasks/tesseract.yml

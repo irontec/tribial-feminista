@@ -1,0 +1,50 @@
+---
+- name: php gearmand | Add wheezy to apt sources list
+  apt_repository: repo="deb http://ftp.es.debian.org/debian/ wheezy main"
+  tags:
+    - php_gearman
+    - common
+
+- name: php gearmand | Install gearman-job-server
+  apt: pkg=gearman-job-server
+  tags: 
+    - php_gearman
+    - common
+
+- name: php gearmand | Install libgearman
+  apt: pkg=libgearman6
+  tags: 
+    - php_gearman
+    - common
+
+- name: php gearmand | Install libgearman-dev
+  apt: pkg=libgearman-dev
+  tags: 
+    - php_gearman
+    - common
+
+- name: php gearmand | Install gearman-tools
+  apt: pkg=gearman-tools
+  tags: 
+    - php_gearman
+    - common
+
+- name: php gearmand | remove Wheezy repo from sources list
+  apt_repository: repo="deb http://ftp.es.debian.org/debian/ wheezy main" state=absent
+  tags: 
+    - php_gearman
+    - common
+
+- name: php gearmand | Install gearman module
+  command: pecl install gearman-1.0.2 creates=/usr/lib/php5/20090626/gearman.so
+  ignore_errors: yes
+  tags: 
+    - php_gearman
+    - common
+
+- name: php gearmand | Create gearman module config file
+  copy: content="extension=gearman.so" dest=/etc/php5/conf.d/gearman.ini mode=644
+  notify: restart apache
+  tags: 
+    - php_gearman
+    - common

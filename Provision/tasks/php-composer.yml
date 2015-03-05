@@ -1,0 +1,12 @@
+---
+- name: php-composer | Install Composer
+  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  tags: 
+    - php-composer
+    - common
+
+- name: php-composer | Give Permissions to Composer
+  shell: chmod a+x /usr/local/bin/composer
+  tags: 
+    - php-composer
+    - common

@@ -1,0 +1,33 @@
+---
+- name: tesseract | Install tesseract
+  apt: pkg=tesseract-ocr state=latest
+  tags:
+    - tesseract
+    - common
+
+- name: tesseract | Install 'spa' language
+  apt: pkg=tesseract-ocr-spa state=latest
+  tags:
+    - tesseract
+    - common
+
+- name: tesseract | Install 'eus' language
+  apt: pkg=tesseract-ocr-eus state=latest
+  tags:
+    - tesseract
+    - common
+
+- name: tesseract | Copy tesseract file
+  copy: src=files/tesseract/runTesseract dest=/usr/bin/runTesseract force=yes
+  tags:
+    - copy-tesseract
+    - tesseract
+    - common
+
+- name: tesseract | Add permisions to tesseract
+  shell: chmod +x /usr/bin/runTesseract
+  ignore_errors: yes
+  tags:
+    - copy-tesseract
+    - tesseract
+    - common

@@ -1,0 +1,19 @@
+---
+- name: yaml | Install libyaml
+  apt: pkg=libyaml-dev state=latest
+  tags: 
+    - yaml
+    - common
+
+- name: yaml | Install yaml module
+  shell: echo "" | pecl install -f yaml-1.1.1 creates=/usr/lib/php5/20100525/yaml.so
+  tags: 
+    - yaml
+    - common
+
+- name: yaml | Creates yaml.ini file && enable it
+  shell: echo "extension=yaml.so" > /etc/php5/conf.d/yaml.ini && php5enmod yaml creates=/etc/php5/apache2/conf.d/yaml.ini
+  notify: restart apache
+  tags: 
+    - yaml
+    - common

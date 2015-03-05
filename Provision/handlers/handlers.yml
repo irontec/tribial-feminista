@@ -1,0 +1,21 @@
+---
+- name: restart apache
+  shell: /etc/init.d/apache2 restart
+
+- name: restart mysql
+  shell: /etc/init.d/mysql restart
+
+- name: restart gearmand
+  shell: /etc/init.d/gearmand restart
+
+- name: restart gearmandpersistent
+  shell: /etc/init.d/gearmandpersistent restart
+
+- name: restart supervisor
+  shell: sudo /etc/init.d/supervisor stop && sleep 1 && sudo /etc/init.d/supervisor start
+
+- name: set timezone
+  shell: export TZ={{ timezone }}
+
+#- name: hostname start
+#  shell: /etc/init.d/hostname.sh start

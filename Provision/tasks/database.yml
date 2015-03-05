@@ -1,0 +1,55 @@
+---
+- name: database | Install mysql server
+  apt: pkg=mysql-server state=latest
+  tags:
+    - database
+    - common
+
+- name: database | Start mysql server
+  command: /etc/init.d/mysql start
+  tags:
+    - database
+    - common
+
+- name: database | Install python-mysqldb
+  apt: pkg=python-mysqldb
+  tags:
+    - database
+    - common
+
+- name: mysql | Load time zones in database
+  shell: "mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -uroot mysql"
+  tags:
+    - database
+    - common
+
+- name: mysql | Configure time zone
+  lineinfile:
+      dest=/etc/mysql/my.cnf
+      backup=yes
+      line="\ndefault-time-zone = UTC\n"
+      owner=root
+      state=present
+      insertafter="\[mysqld\]\n(?!default-time-zone)"
+  tags:
+    - database
+    - common
+
+- name: database | Restart MySQL
+  shell: /etc/init.d/mysql restart
+  tags:
+    - database
+    - common
+
+- name: database | Create database
+  mysql_db: name={{ credentials.database.db }} state=present encoding={{ credentials.database.encoding }} collation={{ credentials.database.collation }}
+  tags:
+    - database
+    - common
+#  notify: restart mysql
+
+- name: database | Create database user/pass
+  mysql_user: name={{ credentials.database.user }} password={{ credentials.database.pass }} priv={{ credentials.database.db }}.*:ALL state=present
+  tags:
+    - database
+    - common

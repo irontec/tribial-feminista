@@ -1,0 +1,15 @@
+---
+- name: gem packages | Install rubygems-integration
+  apt: pkg=rubygems-integration state=latest
+  ignore_errors: yes
+  tags:
+    - gem_packages
+    - common
+
+- name: gem packages | Install gem packages
+  shell: gem install --pre {{ item }}
+  with_items: gem_packages
+  ignore_errors: yes
+  tags: 
+    - gem_packages
+    - common

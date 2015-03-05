@@ -1,0 +1,30 @@
+---
+- name: rvm | Get public key
+  shell: gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+  tags: 
+    - rvm
+    - common
+
+- name: rvm | Install rvm - Ruby Version Manager
+  shell: curl -sSL https://get.rvm.io | bash -s stable
+  tags: 
+    - rvm
+    - common
+
+- name: rvm | Install a ruby version
+  shell: /usr/local/rvm/scripts/rvm install {{ rvm.version }}
+  tags: 
+    - rvm
+    - common
+
+- name: rvm | Set ruby version as default
+  shell: /usr/local/rvm/scripts/rvm use {{ rvm.version }} --default
+  tags: 
+    - rvm
+    - common
+
+- name: rvm | Add RVM to PATH for scripting
+  shell: PATH=$PATH:/usr/local/rvm/scripts/rvm
+  tags: 
+    - rvm
+    - common

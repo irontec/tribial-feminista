@@ -1,0 +1,10 @@
+---
+- name: npm packages | Install npm packages
+  shell: source ~/.nvm/nvm.sh && npm -g install {{ item }}
+  args:
+    executable: /bin/bash
+  sudo: false
+  with_items: npm_packages
+  tags:
+    - npm_packages
+    - common

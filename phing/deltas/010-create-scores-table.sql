@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS `tribialfeminista`.`Scores` (
+  `id` MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `score` VARCHAR(40) NOT NULL,
+  `userId` MEDIUMINT(8) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_Scores_Users`
+    FOREIGN KEY (`userId`)
+    REFERENCES `Users`(`id`) 
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+COMMENT = '[entity]';
