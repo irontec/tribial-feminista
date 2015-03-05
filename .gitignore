@@ -21,14 +21,7 @@ mobile-app/temp/
 mobile-app/.sass-cache
 
 ########### Klear Project ##############
-web/vendor/*
-
-web/storage/*
-web/application/cache/*
-
-########## Phing ######################
-phing/dumps/*
-phing/deploy/scripts/*
+web/vendor
 
 ##########  Editors Files ##############
 *.atomignore
