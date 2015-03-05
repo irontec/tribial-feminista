@@ -1,0 +1,14 @@
+production: 
+  class: \tribialfeminista\Model\Packages
+  fields: 
+    code: 
+      title: _('Code')
+      type: text
+      required: true
+      default: true
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,6 @@
+mappers:
+  - &KlearUsers {mapper: \tribialfeminista\Mapper\Sql\KlearUsers, modelFile: KlearUsers}
+  - &Questions {mapper: \tribialfeminista\Mapper\Sql\Questions, modelFile: Questions}
+  - &Packages {mapper: \tribialfeminista\Mapper\Sql\Packages, modelFile: Packages}
+  - &Users {mapper: \tribialfeminista\Mapper\Sql\Users, modelFile: Users}
+  - &Scores {mapper: \tribialfeminista\Mapper\Sql\Scores, modelFile: Scores}

@@ -1,0 +1,3 @@
+mappers: 
+  - &KlearUsers {mapper: \tribialfeminista\Mapper\Sql\KlearUsers, modelFile: KlearUsers}
+  - &Questions {mapper: \tribialfeminista\Mapper\Sql\Questions, modelFile: Questions}

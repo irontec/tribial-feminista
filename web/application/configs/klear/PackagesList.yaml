@@ -1,0 +1,59 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: packagesList_screen
+  screens: 
+    packagesList_screen: &packagesList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Packages
+      title: _("List of %s %2s", ngettext('Package', 'Packages', 0), "[format| (%parent%)]")
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            packagesEdit_screen: true
+          dialogs: 
+            packagesDel_dialog: true
+          default: packagesEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          packagesNew_screen: true
+        dialogs: 
+          packagesDel_dialog: true
+    packagesNew_screen: &packagesNew_screenLink 
+      <<: *Packages
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Package', 'Packages', 1))
+      shortcutOption: N
+    packagesEdit_screen: &packagesEdit_screenLink 
+      <<: *Packages
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Package', 'Packages', 1), "[format| (%item%)]")
+  dialogs: 
+    packagesDel_dialog: &packagesDel_dialogLink 
+      <<: *Packages
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Package', 'Packages', 1))
+      description: _("Do you want to delete this %s?", ngettext('Package', 'Packages', 1))
+      message: _("%s successfully deleted.", ngettext('Package', 'Packages', 1))
+      multiItem: 1
+      labelOnList: 1
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

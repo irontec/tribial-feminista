@@ -1,0 +1,59 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: questionsList_screen
+  screens: 
+    questionsList_screen: &questionsList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Questions
+      title: _("List of %s %2s", ngettext('Question', 'Questions', 0), "[format| (%parent%)]")
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            questionsEdit_screen: true
+          dialogs: 
+            questionsDel_dialog: true
+          default: questionsEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          questionsNew_screen: true
+        dialogs: 
+          questionsDel_dialog: true
+    questionsNew_screen: &questionsNew_screenLink 
+      <<: *Questions
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Question', 'Questions', 1))
+      shortcutOption: N
+    questionsEdit_screen: &questionsEdit_screenLink 
+      <<: *Questions
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Question', 'Questions', 1), "[format| (%item%)]")
+  dialogs: 
+    questionsDel_dialog: &questionsDel_dialogLink 
+      <<: *Questions
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Question', 'Questions', 1))
+      description: _("Do you want to delete this %s?", ngettext('Question', 'Questions', 1))
+      message: _("%s successfully deleted.", ngettext('Question', 'Questions', 1))
+      multiItem: 1
+      labelOnList: 1
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

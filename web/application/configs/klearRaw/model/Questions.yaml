@@ -1,0 +1,42 @@
+production: 
+  class: \tribialfeminista\Model\Questions
+  fields: 
+    question: 
+      title: _('Question')
+      type: text
+      required: true
+      default: true
+    answer: 
+      title: _('Answer')
+      type: text
+      required: true
+    category: 
+      title: ngettext('Category', 'Categories', 1)
+      type: select
+      required: true
+      source: 
+        data: inline
+        values: 
+          'e': _('e')
+          'h': _('h')
+          'd': _('d')
+          'g': _('g')
+          'a': _('a')
+          'c': _('c')
+    checked: 
+      title: _('Checked')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

@@ -1,0 +1,45 @@
+production: 
+  class: \tribialfeminista\Model\Users
+  fields: 
+    username: 
+      title: _('Username')
+      type: text
+      required: true
+      default: true
+    loginType: 
+      title: _('Login type')
+      type: select
+      required: true
+      source: 
+        data: inline
+        values: 
+          'twitter': _('twitter')
+          'facebook': _('facebook')
+    email: 
+      title: ngettext('Email', 'Emails', 1)
+      type: text
+    active: 
+      title: _('Active')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    createdOn: 
+      title: _('Created on')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

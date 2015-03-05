@@ -1,0 +1,67 @@
+production:
+  main:
+    log:
+      writerName: "Null"
+      writerParams:
+    sitename: Tribial Feminista
+    logo: klear/images/klear.png
+    year: 2014
+    lang: eu
+    langs:
+      es:
+        title: Español
+        language: es
+        locale: es_ES
+      eu:
+        title: Euskara
+        language: eu
+        locale: eu_ES
+    jqueryUI:
+      theme: redmond
+    cssExtended:
+    actionHelpers:
+    auth:
+      adapter: Klear_Auth_Adapter_Basic
+      title: _("Access denied")
+      description: _("Insert your username")
+    timezone: Europe/Madrid
+  menu:
+    General:
+      title: _("Main management")
+      description: _("Main management")
+      submenus:
+        KlearUsersList:
+          title: ngettext('Klear user', 'Klear users', 0)
+          class: fa fa-user
+          description: _("List of %s", ngettext('Klear user', 'Klear users', 0))
+        QuestionsList:
+          title: ngettext('Question', 'Questions', 0)
+          class: fa fa-question
+          description: _("List of %s", ngettext('Question', 'Questions', 0))
+        PackagesList:
+          title: ngettext('Package', 'Packages', 0)
+          class: fa fa-archive
+          description: _("List of %s", ngettext('Package', 'Packages', 0))
+        UsersList:
+          title: ngettext('User', 'Users', 0)
+          class: fa fa-users
+          description: _("List of %s", ngettext('User', 'Users', 0))
+        ScoresList:
+          title: ngettext('Score', 'Scores', 0)
+          class: fa fa-trophy
+          description: _("List of %s", ngettext('Score', 'Scores', 0))
+  footerMenu:
+    footer:
+      title: ''
+      submenus:
+        Dashboard:
+          default: true
+          title: _("Panel de control")
+          class: ui-silk-bricks
+          description: _("Vista general de la plataforma")
+testing:
+  _extends: production
+staging:
+  _extends: production
+development:
+  _extends: production

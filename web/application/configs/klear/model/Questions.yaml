@@ -1,0 +1,55 @@
+production:
+  class: \tribialfeminista\Model\Questions
+  fields:
+    question:
+      title: _('Question')
+      type: text
+      required: true
+      default: true
+    answer:
+      title: _('Answer')
+      type: text
+      required: true
+    category:
+      title: ngettext('Category', 'Categories', 1)
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'e': _('Espectáculos')
+          'h': _('Historia')
+          'd': _('Deportes')
+          'g': _('Geografía')
+          'a': _('Arte y Literatura')
+          'c': _('Ciencia')
+    checked:
+      title: _('Checked')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    packageId:
+      title: _('Package code')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \tribialfeminista\Mapper\Sql\Packages
+          fieldName:
+            fields:
+              - code
+            template: '%code%'
+          order: code
+testing:
+  _extends: production
+staging:
+  _extends: production
+development:
+  _extends: production

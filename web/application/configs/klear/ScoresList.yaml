@@ -1,0 +1,59 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: scoresList_screen
+  screens: 
+    scoresList_screen: &scoresList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Scores
+      title: _("List of %s %2s", ngettext('Score', 'Scores', 0), "[format| (%parent%)]")
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            scoresEdit_screen: true
+          dialogs: 
+            scoresDel_dialog: true
+          default: scoresEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          scoresNew_screen: true
+        dialogs: 
+          scoresDel_dialog: true
+    scoresNew_screen: &scoresNew_screenLink 
+      <<: *Scores
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Score', 'Scores', 1))
+      shortcutOption: N
+    scoresEdit_screen: &scoresEdit_screenLink 
+      <<: *Scores
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Score', 'Scores', 1), "[format| (%item%)]")
+  dialogs: 
+    scoresDel_dialog: &scoresDel_dialogLink 
+      <<: *Scores
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Score', 'Scores', 1))
+      description: _("Do you want to delete this %s?", ngettext('Score', 'Scores', 1))
+      message: _("%s successfully deleted.", ngettext('Score', 'Scores', 1))
+      multiItem: 1
+      labelOnList: 1
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production

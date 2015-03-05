@@ -1,0 +1,27 @@
+production:
+  class: \tribialfeminista\Model\Scores
+  fields:
+    score:
+      title: _('Score')
+      type: text
+      required: true
+      default: true
+    userId:
+      title: _('User Device ID')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \tribialfeminista\Mapper\Sql\Users
+          fieldName:
+            fields:
+              - deviceId
+            template: '%deviceId%'
+          order: deviceId
+testing:
+  _extends: production
+staging:
+  _extends: production
+development:
+  _extends: production
