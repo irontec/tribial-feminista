@@ -14,10 +14,10 @@ Libreriak
 
 Lizentzia
 ----
-* [The MIT License (MIT)][11]
+* [“European Union Public Licence” (EUPL)][11]
 
 [1]:https://play.google.com/store/apps/details?id=com.irontec.tribialfeminista
 [2]:http://ionicframework.com/
 [3]:https://angularjs.org/
 [4]:https://source.android.com/
-[11]:https://github.com/irontec/Ikasega/blob/master/LICENSE
+[11]:https://github.com/irontec/tribial-feminista/blob/master/license.txt
